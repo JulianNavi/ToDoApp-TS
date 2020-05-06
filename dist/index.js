@@ -11,10 +11,6 @@ let todos = [
 ];
 let collection = new toDoCollections_1.ToDoCollection('Julius', todos);
 console.clear();
-console.log(`${collection.userName}'s ToDo list`);
-// let newId = collection.addToDo('Skip changelog');
-// let todoItem = collection.getToDoById(newId);
-// todoItem.printDetails();
-// collection.addToDo(todoItem);
-// collection.removeComplete();
+console.log(`${collection.userName}'s ToDo list ` +
+    `${collection.getItemCounts().incomplete} items to do`);
 collection.getToDoItems(true).forEach(item => item.printDetails());

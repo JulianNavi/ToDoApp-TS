@@ -36,5 +36,11 @@ class ToDoCollection {
             }
         });
     }
+    getItemCounts() {
+        return {
+            total: this.itemMap.size,
+            incomplete: this.getToDoItems(false).length
+        };
+    }
 }
 exports.ToDoCollection = ToDoCollection;

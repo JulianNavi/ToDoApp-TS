@@ -1,5 +1,10 @@
 import { ToDoItem } from './toDoItem';
 
+type ItemCounts = {
+  total: number,
+  incomplete: number
+}
+
 export class ToDoCollection {
   private nextId: number = 1;
   private itemMap = new Map<number, ToDoItem>();
@@ -37,5 +42,11 @@ export class ToDoCollection {
         this.itemMap.delete(item.id)
       }
     })
+  }
+  getItemCounts(): ItemCounts {
+    return {
+      total: this.itemMap.size,
+      incomplete: this.getToDoItems(false).length
+    }
   }
 }
