@@ -1,4 +1,4 @@
-import { ToDoItem } from './toDoItem'
+import { ToDoItem } from './toDoItem';
 
 export class ToDoCollection {
   private nextId: number = 1;
