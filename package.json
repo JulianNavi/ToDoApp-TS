@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JulianNavi/ToDoApp-TS/issues"
   },
-  "homepage": "https://github.com/JulianNavi/ToDoApp-TS#readme"
+  "homepage": "https://github.com/JulianNavi/ToDoApp-TS#readme",
+  "devDependencies": {
+    "inquirer": "^6.3.1"
+  }
 }
