@@ -1,6 +1,7 @@
 import { ToDoItem } from './toDoItem';
 import { ToDoCollection } from './toDoCollections';
 import * as inquirer from 'inquirer';
+import { jsonToDoCollection } from './jsonToDoCollection';
 
 let todos: ToDoItem[] = [
   new ToDoItem(1, 'Go for run'),
@@ -10,7 +11,7 @@ let todos: ToDoItem[] = [
   new ToDoItem(5, 'Finish homework', true)
 ];
 
-let collection: ToDoCollection = new ToDoCollection('Julius', todos);
+let collection: ToDoCollection = new jsonToDoCollection('Julius', todos);
 let showCompleted = true;
 
 function displayToDoList(): void {
