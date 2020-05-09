@@ -9,6 +9,7 @@ let todos: ToDoItem[] = [
   new ToDoItem(4, 'Lets start coding'),
   new ToDoItem(5, 'Finish homework', true)
 ];
+
 let collection: ToDoCollection = new ToDoCollection('Julius', todos);
 let showCompleted = true;
 
@@ -17,10 +18,27 @@ function displayToDoList(): void {
     `${collection.getItemCounts().incomplete} items to do`);
   collection.getToDoItems(showCompleted).forEach(item => item.printDetails());
 }
+
 enum Commands {
+  Add = "Add new task",
   Toggle = "Show/Hide completed",
   Quit = "Quit"
 }
+
+function promptAdd(): void {
+  console.clear();
+  inquirer.prompt({
+    type: 'input',
+    name: 'add',
+    message: 'Enter new task:'
+  }).then(answers => {
+    if (answers['add'] !== "") {
+      collection.addToDo(answers['add'])
+    }
+    promptUser();
+  })
+}
+
 function promptUser(): void {
   console.clear();
   displayToDoList();
@@ -34,6 +52,9 @@ function promptUser(): void {
       case Commands.Toggle:
         showCompleted = !showCompleted;
         promptUser();
+        break;
+      case Commands.Add:
+        promptAdd();
         break;
     }
   })

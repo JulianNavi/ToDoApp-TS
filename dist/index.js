@@ -19,9 +19,23 @@ function displayToDoList() {
 }
 var Commands;
 (function (Commands) {
+    Commands["Add"] = "Add new task";
     Commands["Toggle"] = "Show/Hide completed";
     Commands["Quit"] = "Quit";
 })(Commands || (Commands = {}));
+function promptAdd() {
+    console.clear();
+    inquirer.prompt({
+        type: 'input',
+        name: 'add',
+        message: 'Enter new task:'
+    }).then(answers => {
+        if (answers['add'] !== "") {
+            collection.addToDo(answers['add']);
+        }
+        promptUser();
+    });
+}
 function promptUser() {
     console.clear();
     displayToDoList();
@@ -35,6 +49,9 @@ function promptUser() {
             case Commands.Toggle:
                 showCompleted = !showCompleted;
                 promptUser();
+                break;
+            case Commands.Add:
+                promptAdd();
                 break;
         }
     });
