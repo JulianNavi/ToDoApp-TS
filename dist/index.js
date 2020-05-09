@@ -11,13 +11,15 @@ let todos = [
     new toDoItem_1.ToDoItem(5, 'Finish homework', true)
 ];
 let collection = new toDoCollections_1.ToDoCollection('Julius', todos);
+let showCompleted = true;
 function displayToDoList() {
     console.log(`${collection.userName}'s ToDo list ` +
         `${collection.getItemCounts().incomplete} items to do`);
-    collection.getToDoItems(true).forEach(item => item.printDetails());
+    collection.getToDoItems(showCompleted).forEach(item => item.printDetails());
 }
 var Commands;
 (function (Commands) {
+    Commands["Toggle"] = "Show/Hide completed";
     Commands["Quit"] = "Quit";
 })(Commands || (Commands = {}));
 function promptUser() {
@@ -29,8 +31,11 @@ function promptUser() {
         message: 'Choose message',
         choices: Object.values(Commands)
     }).then(answers => {
-        if (answers['command'] !== Commands.Quit) {
-            promptUser();
+        switch (answers["command"]) {
+            case Commands.Toggle:
+                showCompleted = !showCompleted;
+                promptUser();
+                break;
         }
     });
 }
