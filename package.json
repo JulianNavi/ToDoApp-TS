@@ -18,6 +18,8 @@
   "homepage": "https://github.com/JulianNavi/ToDoApp-TS#readme",
   "devDependencies": {
     "@types/inquirer": "^6.5.0",
-    "inquirer": "^6.3.1"
-  }
+    "inquirer": "^6.3.1",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {}
 }
